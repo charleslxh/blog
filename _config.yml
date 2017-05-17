@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title:  廖学辉的博客
+title: 计算机那些事儿
 subtitle: 博客
 description:
 author: Charles Liao
@@ -33,9 +33,9 @@ default_layout: post
 auto_spacing: true
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
-filename_case: 0
+filename_case: 1
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -47,6 +47,15 @@ highlight:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  - Linux
+  - Redis
+  - ElasticSearch
+  - NodeJS
+  - PHP
+  - MongoDB
+  - MySQL
+  - Nginx
+  - Apache
 tag_map:
 
 # Date / Time format
@@ -88,3 +97,27 @@ algolia:
   adminApiKey: 1c76f3251b982198969641987cba5502
   indexName: blog
   chunkSize: 5000
+
+# Markdown-it config
+## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-emoji  # add emoji
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ¶
