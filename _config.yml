@@ -69,12 +69,13 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@git.daniujia.com:charles.liao/blog.git
-  branch: master
-  message:
-  name: Charles Liao
-  email: charleslxh@icloud.com
+  type:
+  # type: git
+  # repo: git@git.daniujia.com:charles.liao/blog.git
+  # branch: master
+  # message:
+  # name: Charles Liao
+  # email: charleslxh@icloud.com
   # extend_dirs: /
   # ignore_hidden: false
   # ignore_pattern: regexp
