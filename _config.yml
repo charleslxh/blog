@@ -73,7 +73,7 @@ deploy:
   repo: git@git.daniujia.com:charles.liao/blog.git
   branch: master
   message:
-  name: charles.liao
+  name: Charles Liao
   email: charleslxh@icloud.com
   # extend_dirs: /
   # ignore_hidden: false
