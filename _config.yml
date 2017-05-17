@@ -69,7 +69,15 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@git.daniujia.com:charles.liao/blog.git
+  branch: master
+  message:
+  name: charles.liao
+  email: charleslxh@icloud.com
+  # extend_dirs: /
+  # ignore_hidden: false
+  # ignore_pattern: regexp
 
 # Search
 ## https://www.algolia.com
