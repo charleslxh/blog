@@ -4,13 +4,14 @@ date: 2017-05-20 09:58:52
 categories: Linux
 tags:
     - Linux
-    - Ubuntu
     - Firewall
     - UFW
     - Security
 ---
 
 `UFW`(Uncomplicated Firewall) 是一个非常容易上手的 `iptables` 类防火墙配置工具，这个工具可以对出入服务的网络数据进行分割、过滤、转发等等细微的控制，进而实现诸如防火墙、 `NAT` 等功能。它简化了 `iptable` 那复杂的配置过程。我们都知道 `iptable` 非常强大、灵活，但是对于初学者来学习如何使用它正确的配置防火墙是比较难的，但是你又想保护你的网络，`UFW` 将会是你最好的选择。
+
+<!-- more -->
 
 下面我将会解释如何在 `Ubuntu 14.04` 中使用 `UFW` 安装、配置防火墙。
 
