@@ -7,13 +7,9 @@ title: 采菊杂记
 subtitle: 博客
 description:
 author: Charles Liao
-language: zh-cn
+language: zh-CN
 timezone: Asia/Shanghai
-copyright:
-  owner: Charles Liao
-  number: 赣 ICP 备 17006601 号
-  since: 2017
-  domain: CHARLESLXH.TOP
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -97,11 +93,6 @@ deploy:
   type: git
   repository: git@github.com:charleslxh/charleslxh.github.io.git
   branch: master
-  # name: Charles Liao
-  # email: charleslxh@icloud.com
-  # extend_dirs: /
-  # ignore_hidden: false
-  # ignore_pattern: regexp
 
 # Search
 ## https://www.algolia.com
@@ -135,3 +126,10 @@ markdown:
     permalink: true
     permalinkClass: header-anchor
     permalinkSymbol: ¶
+
+# Post Wordcount
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
