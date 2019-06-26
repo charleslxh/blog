@@ -133,3 +133,11 @@ symbols_count_time:
   time: true
   total_symbols: true
   total_time: true
+
+# LeanCloud (China)
+leancloud_counter_security:
+  enable_sync: true
+  app_id: NV21xRl5ask9fATFPW4gWQMc-gzGzoHsz # your leancloud application appid
+  app_key: Wpxd8UMIE2ex6rsU6Vsi8hiP # your leancloud application appkey
+  username: charleslxh@icloud.com # Will be asked while deploying if is left blank
+  password: 8001711046liaoXUE # Recommmended to be left blank. Will be asked while deploying if is left blank
