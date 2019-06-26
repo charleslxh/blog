@@ -95,9 +95,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: root@173.199.118.8:/var/repo/blog.git
+  repository: git@github.com:charleslxh/charleslxh.github.io.git
   branch: master
-  message:
   # name: Charles Liao
   # email: charleslxh@icloud.com
   # extend_dirs: /
