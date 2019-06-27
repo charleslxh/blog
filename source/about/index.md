@@ -31,7 +31,7 @@ date: 2017-05-20 00:12:26
     {
         public static function getPhoneNumber()
         {
-            return 4 << 32 | 79 << 24 | 173 << 16 | 196 << 8 | 246 << 0;
+            return 0x04 << 32 | 0x4f << 24 | 0xad << 16 | 0xc4 << 8 | 0xf6 << 0;
         }
     }
 
