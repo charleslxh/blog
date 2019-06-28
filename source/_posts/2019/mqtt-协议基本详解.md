@@ -42,18 +42,18 @@ MQTT 是一种 **发布/订阅** 传输协议，基本原理和实现如下：
 
 ## 基本术语
 
-#### 网络连接 Network Connection
+### 网络连接 Network Connection
 
 MQTT使用的底层传输协议基础设施。
 
 - 客户端使用它连接服务端。
 - 它提供有序的、可靠的、双向字节流传输。
 
-#### 应用消息 Application Message
+### 应用消息 Application Message
 
 MQTT协议通过网络传输应用数据，应用消息通过MQTT传输时，它们有关联的服务质量（QoS）和主题（Topic）。
 
-#### 客户端 Client
+### 客户端 Client
 
 使用 MQTT 的程序或设备，客户端总是通过网络连接到服务端，它可以：
 
@@ -62,7 +62,7 @@ MQTT协议通过网络传输应用数据，应用消息通过MQTT传输时，它
 - 取消订阅以移除接受应用消息的请求。
 - 从服务端断开连接。
 
-#### 服务端 Server
+### 服务端 Server
 
 一个程序或设备，作为发送消息的客户端和请求订阅的客户端之间的中介，他需要：
 
@@ -73,19 +73,19 @@ MQTT协议通过网络传输应用数据，应用消息通过MQTT传输时，它
 - 订阅 Subscription
 - 订阅包含一个主题过滤器（Topic Filter）和一个最大的服务质量（QoS）等级。订阅与单个会话（Session）关联，会话可以包含多于一个的订阅，会话的每个订阅都有一个不同的主题过滤器。
 
-#### 主题名 Topic Name
+### 主题名 Topic Name
 
 附加在应用消息上的一个标签，服务端已知且与订阅匹配，服务端发送应用消息的一个副本给每一个匹配的客户端订阅。
 
-#### 主题过滤器 Topic Filter
+### 主题过滤器 Topic Filter
 
 订阅中包含的一个表达式，用于表示相关的一个或多个主题，主题过滤器可以使用通配符。
 
-#### 会话 Session
+### 会话 Session
 
 客户端和服务端之间的状态交互，一些会话持续时长与网络连接一样，另一些可以在客户端和服务端的多个连续网络连接间扩展。
 
-#### 控制报文 MQTT Control Packet
+### 控制报文 MQTT Control Packet
 
 通过网络连接发送的信息数据包。MQTT规范定义了十四种不同类型的控制报文，其中一个（PUBLISH报文）用于传输应用消息。
 
@@ -106,13 +106,13 @@ MQTT 控制报文由三部分组成，如下：
 
 ![MQTT 固定报头格式](/uploads/images/posts/mqtt/mqtt-protocol-format.png)
 
-#### 固定报头
+### 固定报头
 
 每个 MQTT 控制报文都 **必须** 包含一个固定报头，用于描述该报文具体行为。
 
 ![MQTT 固定报头格式](/uploads/images/posts/mqtt/mqtt-protocol-fixed-header.png)
 
-##### 报文类型（协议名）
+#### 报文类型（协议名）
 
 **报文类型（协议名）** 用首字节的四位比特（[7-4]）来分别表示 16 中报文类型（0 - 15），不同的值二进制表示方法如下：
 
@@ -135,7 +135,7 @@ MQTT 控制报文由三部分组成，如下：
 | DISCONNECT  | 14     | 客户端到服务端   | 客户端断开连接
 | Reserved    | 15     | 禁止             | 保留 |
 
-##### 标志位
+#### 标志位
 
 固定报头第1个字节的剩余的 4 位（[3-0]）包含每个 MQTT 控制报文类型特定的标志，见以下表格。表格中任何标记为“保留”的标志位，都是保留给以后使用的，**必须** 设置为表格中列出的值 [MQTT-2.2.2-1]。如果收到非法的标志，接收者 **必须** 关闭网络连接。
 
@@ -160,9 +160,7 @@ MQTT 控制报文由三部分组成，如下：
 - QoS<sup>2</sup> = PUBLISH报文的服务质量等级
 - RETAIN<sup>3</sup> = PUBLISH报文的保留标志
 
-PUBLISH控制报文中的DUP, QoS和RETAIN标志的描述见 3.3.1节。
-
-##### 剩余长度
+#### 剩余长度
 
 **剩余长度** 表示当前报文后面还有多少字节，从第二个字节开始，使用 [变长编码]() 方案来表示剩余长度，**最多使用 4 个字节，最少使用 1 个字节。**
 
@@ -181,7 +179,7 @@ PUBLISH控制报文中的DUP, QoS和RETAIN标志的描述见 3.3.1节。
 | 3 | 16384 (0x80, 0x80, 0x01)         | 2 097 151 (0xFF, 0xFF, 0x7F)         |
 | 4 | 2097152 (0x80, 0x80, 0x80, 0x01) | 268 435 455 (0xFF, 0xFF, 0xFF, 0x7F) |
 
-#### 可变报头
+### 可变报头
 
 某些 MQTT 控制报文包含一个可变报头部分。它在固定报头和负载之间。可变报头的内容根据报文类型的不同而不同。可变报头的报文标识符（Packet Identifier）字段存在于在多个类型的报文里。
 
@@ -190,18 +188,22 @@ PUBLISH控制报文中的DUP, QoS和RETAIN标志的描述见 3.3.1节。
 | byte 1  | 报文标识符 MSB |
 | byte 2  | 报文标识符 LSB |
 
-很多控制报文的可变报头部分包含一个两字节的报文标识符字段。这些报文是 PUBLISH（QoS > 0时）， PUBACK，PUBREC，PUBREL，PUBCOMP，SUBSCRIBE, SUBACK，UNSUBSCIBE，UNSUBACK。
+很多控制报文的可变报头部分包含一个两字节的报文标识符字段。这些报文是 PUBLISH（QoS > 0时）， PUBACK、PUBREC、PUBREL、PUBCOMP、SUBSCRIBE、SUBACK、UNSUBSCIBE、UNSUBACK。
 
-SUBSCRIBE，UNSUBSCRIBE和PUBLISH（QoS大于0）控制报文 **必须** 包含一个非零的16位报文标识符（Packet Identifier）[MQTT-2.3.1-1]。客户端每次发送一个新的这些类型的报文时都**必须**分配一个当前未使用的报文标识符 [MQTT-2.3.1-2]。如果一个客户端要重发这个特殊的控制报文，在随后重发那个报文时，它**必须**使用相同的标识符。当客户端处理完这个报文对应的确认后，这个报文标识符就释放可重用。QoS 1 的 PUBLISH 对应的是 PUBACK，QoS 2 的 PUBLISH 对应的是 PUBCOMP，与SUBSCRIBE或UNSUBSCRIBE对应的分别是 SUBACK 或 UNSUBACK [MQTT-2.3.1-3]。发送一个 QoS 0 的 PUBLISH 报文时，相同的条件也适用于服务端 [MQTT-2.3.1-4]。
+SUBSCRIBE、UNSUBSCRIBE 和 PUBLISH（QoS大于0）控制报文 **必须** 包含一个非零的16位报文标识符（Packet Identifier）。客户端每次发送一个新的这些类型的报文时都 **必须** 分配一个当前未使用的报文标识符。如果一个客户端要重发这个特殊的控制报文，在随后重发那个报文时，它 **必须** 使用相同的标识符。当客户端处理完这个报文对应的确认后，这个报文标识符就释放可重用。QoS 1 的 PUBLISH 对应的是 PUBACK，QoS 2 的 PUBLISH 对应的是 PUBCOMP，与 SUBSCRIBE 或 UNSUBSCRIBE 对应的分别是 SUBACK 或 UNSUBACK。发送一个 QoS 0 的 PUBLISH 报文时，相同的条件也适用于服务端。
 
-QoS等于 0 的 PUBLISH 报文 **不能** 包含报文标识符 [MQTT-2.3.1-5]。
+QoS等于 0 的 PUBLISH 报文 **不能** 包含报文标识符。
 
-PUBACK, PUBREC, PUBREL 报文 **必须** 包含与最初发送的PUBLISH报文相同的报文标识符 [MQTT-2.3.1-6]。类似地，SUBACK 和 UNSUBACK **必须** 包含在对应的 SUBSCRIBE 和 UNSUBSCRIBE 报文中使用的报文标识符 [MQTT-2.3.1-7]。
+PUBACK、PUBREC、PUBREL 报文 **必须** 包含与最初发送的 PUBLISH 报文相同的报文标识符。类似地，SUBACK 和 UNSUBACK **必须** 包含在对应的 SUBSCRIBE 和 UNSUBSCRIBE 报文中使用的报文标识符。
 
-#### 有效载荷
+### 有效载荷
 
 具体协议内容，不同协议有不同的载荷。
 
 ## MQTT 控制报文详解
 
-该部分内容，请查看我的另一篇博客 [MQTT - 控制报文详情/2019/06/27/2019/mqtt-控制报文详情](/2019/06/27/2019/mqtt-控制报文详情)
+该部分内容，请查看我的另一篇博客 [MQTT - 控制报文详情](/2019/06/28/2019/mqtt-控制报文详情)
+
+## 参考链接
+
+[MQTT Version 3.1.1 Official Manual](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.html)
